@@ -1,0 +1,70 @@
+{
+    "sourceFile": "blog/post.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1674809049403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674809056112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,3 @@\n+<?php\n+\n+require\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809063126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n <?php\n \n-require\n\\ No newline at end of file\n+require('template')\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809068650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n <?php\n \n-require('template')\n\\ No newline at end of file\n+require('templates/post')\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809102777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n <?php\n \n-require('templates/post')\n\\ No newline at end of file\n+require(__DIR__'templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809108247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n <?php\n \n-require(__DIR__'templates/post.php');\n\\ No newline at end of file\n+require(__DIR__.'/templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809367304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,25 @@\n <?php\n \n-require(__DIR__.'/templates/post.php');\n\\ No newline at end of file\n+<?php\n+ \n+$post = [\n+    'title' => 'Un faux titre.',\n+    'french_creation_date' => '03/03/2022 à 12h14min42s',\n+    'content' => \"Le faux contenu de mon billet.\\nC'est fantastique !\",\n+];\n+$comments = [\n+    [\n+        'author' => 'Un premier faux auteur',\n+        'french_creation_date' => '03/03/2022 à 12h15min42s',\n+        'comment' => 'Un faux commentaire.\\n Le premier.',\n+    ],\n+    [\n+        'author' => 'Un second faux auteur',\n+        'french_creation_date' => '03/03/2022 à 12h16min42s',\n+        'comment' => 'Un faux commentaire.\\n Le second.',\n+    ],\n+];\n+ \n+require('templates/post.php');\n+\n+require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809373778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-<?php\n+\n  \n $post = [\n     'title' => 'Un faux titre.',\n     'french_creation_date' => '03/03/2022 à 12h14min42s',\n@@ -19,7 +19,7 @@\n         'comment' => 'Un faux commentaire.\\n Le second.',\n     ],\n ];\n  \n-require('templates/post.php');\n \n+\n require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809592958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,25 +1,23 @@\n <?php\n \n \n+<?php\n+// post.php\n  \n-$post = [\n-    'title' => 'Un faux titre.',\n-    'french_creation_date' => '03/03/2022 à 12h14min42s',\n-    'content' => \"Le faux contenu de mon billet.\\nC'est fantastique !\",\n-];\n-$comments = [\n-    [\n-        'author' => 'Un premier faux auteur',\n-        'french_creation_date' => '03/03/2022 à 12h15min42s',\n-        'comment' => 'Un faux commentaire.\\n Le premier.',\n-    ],\n-    [\n-        'author' => 'Un second faux auteur',\n-        'french_creation_date' => '03/03/2022 à 12h16min42s',\n-        'comment' => 'Un faux commentaire.\\n Le second.',\n-    ],\n-];\n+require('src/model.php');\n  \n+if (isset($_GET['id']) && $_GET['id'] > 0) {\n+    $identifier = $_GET['id'];\n+} else {\n+    echo 'Erreur : aucun identifiant de billet envoyé';\n+ \n+    die;\n+}\n \n+$post = getPost($identifier);\n+$comments = getComments($identifier);\n \n+require('templates/post.php');\n+\n+\n require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809599455,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,6 @@\n <?php\n \n-\n-<?php\n // post.php\n  \n require('src/model.php');\n  \n@@ -16,8 +14,8 @@\n \n $post = getPost($identifier);\n $comments = getComments($identifier);\n \n-require('templates/post.php');\n+-\n \n \n require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809612878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <?php\n \n-// post.php\n+\n  \n-require('src/model.php');\n+require(__DIR'src/model.php');\n  \n if (isset($_GET['id']) && $_GET['id'] > 0) {\n     $identifier = $_GET['id'];\n } else {\n"
+                },
+                {
+                    "date": 1674809618077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <?php\n \n \n  \n-require(__DIR'src/model.php');\n+require(__DIR__./../'src/model.php');\n  \n if (isset($_GET['id']) && $_GET['id'] > 0) {\n     $identifier = $_GET['id'];\n } else {\n"
+                },
+                {
+                    "date": 1674809623763,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <?php\n \n \n  \n-require(__DIR__./../'src/model.php');\n+require(__DIR__.'/../src/model.php');\n  \n if (isset($_GET['id']) && $_GET['id'] > 0) {\n     $identifier = $_GET['id'];\n } else {\n"
+                },
+                {
+                    "date": 1674809634064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n <?php\n-\n require(__DIR__.'/../src/model.php');\n  \n if (isset($_GET['id']) && $_GET['id'] > 0) {\n     $identifier = $_GET['id'];\n"
+                }
+            ],
+            "date": 1674809049403,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

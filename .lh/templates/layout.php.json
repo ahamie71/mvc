@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/layout.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1674809811940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674831089846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n <!DOCTYPE html>\n <html>\n-   <head>\n-      <meta charset=\"utf-8\" />\n-      <title><?= $title ?></title>\n-      <link href=\"style.css\" rel=\"stylesheet\" /> \n-   </head>\n+    <head>\n+        <meta charset=\"utf-8\" />\n+        <title><?= $title ?></title>\n+        <link href=\"style.css\" rel=\"stylesheet\" />\n+    </head>\n \n-   <body>\n-      <?= $content ?>\n-   </body>\n+    <body>\n+        <?= $content ?>\n+    </body>\n </html>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1674809811940,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\n<html>\n   <head>\n      <meta charset=\"utf-8\" />\n      <title><?= $title ?></title>\n      <link href=\"style.css\" rel=\"stylesheet\" /> \n   </head>\n\n   <body>\n      <?= $content ?>\n   </body>\n</html>"
+        }
+    ]
+}

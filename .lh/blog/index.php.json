@@ -1,0 +1,474 @@
+{
+    "sourceFile": "blog/index.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 114,
+            "patches": [
+                {
+                    "date": 1674807918167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674808025302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,48 +0,0 @@\n-<!DOCTYPE html>\n-<html>\n-   <head>\n-      <meta charset=\"utf-8\" />\n-      <title>Le blog de l'AVBN</title>\n-      <link href=\"style.css\" rel=\"stylesheet\" />\n-   </head>\n-\n-   <body>\n-      <h1>Le super blog de l'AVBN !</h1>\n-      <p>Derniers billets du blog :</p>\n-\n-      <?php\n-      // Connexion à la base de données\n-      try\n-      {\n-          $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');\n-      }\n-      catch(Exception $e){\n-            die( 'Erreur : '.$e->getMessage()   );\n-      }\n-\n-      // On récupère les 5 derniers billets\n-      $req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \\'%d/%m/%Y à %Hh%imin%ss\\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');\n-\n-      while ($donnees = $req->fetch())\n-      {\n-      ?>\n-      <div class=\"news\">\n-         <h3>\n-            <?php echo htmlspecialchars($donnees['titre']); ?>\n-            <em>le <?php echo $donnees['date_creation_fr']; ?></em>\n-         </h3>\n-         <p>\n-         <?php\n-         // On affiche le contenu du billet\n-                echo    nl2br ( htmlspecialchars( $donnees['contenu']));\n-         ?>\n-         <br />\n-         <em><a href=\"#\">Commentaires</a></em>\n-         </p>\n-      </div>\n-      <?php\n-      } // Fin de la boucle des billets\n-      $req->closeCursor();\n-      ?>\n-   </body>\n-</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808031916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,60 @@\n+<?php\n \n+// We connect to the database.\n+try {\n+\t$database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');\n+} catch(Exception $e) {\n+\tdie('Erreur : '.$e->getMessage());\n+}\n+\n+// We retrieve the 5 last blog posts.\n+$statement = $database->query(\n+\t\"SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5\"\n+);\n+$posts = [];\n+while (($row = $statement->fetch())) {\n+\t$post = [\n+    \t'title' => $row['titre'],\n+    \t'french_creation_date' => $row['date_creation_fr'],\n+    \t'content' => $row['contenu'],\n+\t];\n+\n+\t$posts[] = $post;\n+}\n+\n+?>\n+\n+<!DOCTYPE html>\n+<html>\n+\t<head>\n+    \t<meta charset=\"utf-8\" />\n+    \t<title>Le blog de l'AVBN</title>\n+    \t<link href=\"style.css\" rel=\"stylesheet\" />\n+\t</head>\n+\n+\t<body>\n+    \t<h1>Le super blog de l'AVBN !</h1>\n+    \t<p>Derniers billets du blog :</p>\n+\n+    \t<?php\n+    \tforeach ($posts as $post) {\n+    \t?>\n+        \t<div class=\"news\">\n+            \t<h3>\n+                \t<?php echo htmlspecialchars($post['title']); ?>\n+                \t<em>le <?php echo $post['french_creation_date']; ?></em>\n+            \t</h3>\n+            \t<p>\n+                \t<?php\n+                \t// We display the post content.\n+                \techo nl2br(htmlspecialchars($post['content']));\n+                \t?>\n+                \t<br />\n+                \t<em><a href=\"#\">Commentaires</a></em>\n+            \t</p>\n+        \t</div>\n+    \t<?php\n+    \t} // The end of the posts loop.\n+    \t?>\n+\t</body>\n+</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808132584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,38 +23,4 @@\n }\n \n ?>\n \n-<!DOCTYPE html>\n-<html>\n-\t<head>\n-    \t<meta charset=\"utf-8\" />\n-    \t<title>Le blog de l'AVBN</title>\n-    \t<link href=\"style.css\" rel=\"stylesheet\" />\n-\t</head>\n-\n-\t<body>\n-    \t<h1>Le super blog de l'AVBN !</h1>\n-    \t<p>Derniers billets du blog :</p>\n-\n-    \t<?php\n-    \tforeach ($posts as $post) {\n-    \t?>\n-        \t<div class=\"news\">\n-            \t<h3>\n-                \t<?php echo htmlspecialchars($post['title']); ?>\n-                \t<em>le <?php echo $post['french_creation_date']; ?></em>\n-            \t</h3>\n-            \t<p>\n-                \t<?php\n-                \t// We display the post content.\n-                \techo nl2br(htmlspecialchars($post['content']));\n-                \t?>\n-                \t<br />\n-                \t<em><a href=\"#\">Commentaires</a></em>\n-            \t</p>\n-        \t</div>\n-    \t<?php\n-    \t} // The end of the posts loop.\n-    \t?>\n-\t</body>\n-</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808139667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,7 +20,8 @@\n \t];\n \n \t$posts[] = $post;\n }\n+require\n \n ?>\n \n"
+                },
+                {
+                    "date": 1674808145735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,8 @@\n \t];\n \n \t$posts[] = $post;\n }\n-require\n+require('templ')\n \n ?>\n \n"
+                },
+                {
+                    "date": 1674808151088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,8 @@\n \t];\n \n \t$posts[] = $post;\n }\n-require('templ')\n+require('templates/home')\n \n ?>\n \n"
+                },
+                {
+                    "date": 1674808499541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,27 +1,8 @@\n <?php\n \n-// We connect to the database.\n-try {\n-\t$database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');\n-} catch(Exception $e) {\n-\tdie('Erreur : '.$e->getMessage());\n-}\n+require('src/model.php');\n \n-// We retrieve the 5 last blog posts.\n-$statement = $database->query(\n-\t\"SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5\"\n-);\n-$posts = [];\n-while (($row = $statement->fetch())) {\n-\t$post = [\n-    \t'title' => $row['titre'],\n-    \t'french_creation_date' => $row['date_creation_fr'],\n-    \t'content' => $row['contenu'],\n-\t];\n+$posts = getPosts();\n \n-\t$posts[] = $post;\n-}\n-require('templates/home')\n-\n-?>\n-\n+require('templates/homepage.php');\n+?>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808519947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,5 @@\n require('src/model.php');\n \n $posts = getPosts();\n \n-require('templates/homepage.php');\n-?>\n\\ No newline at end of file\n+require('templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808642572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require('src/model.php');\n+require('__Dsrc/model.php');\n \n $posts = getPosts();\n \n require('templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808648832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require('__Dsrc/model.php');\n+require(__DIR__.src/model.php');\n \n $posts = getPosts();\n \n require('templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808741371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__.src/model.php');\n+require(__DIR__.'/../src/model.php');\n \n $posts = getPosts();\n \n\\ No newline at end of file\n-require('templates/homepage.php');\n+require(__'templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674808749307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,5 @@\n require(__DIR__.'/../src/model.php');\n \n $posts = getPosts();\n \n-require(__'templates/homepage.php');\n\\ No newline at end of file\n+require(__DIR__.'/templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810361099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,1 @@\n-<?php\n-\n-require(__DIR__.'/../src/model.php');\n-\n-$posts = getPosts();\n-\n-require(__DIR__.'/templates/homepage.php');\n\\ No newline at end of file\n+');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810454303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,22 @@\n-');\n\\ No newline at end of file\n+<?php\n+\n+require_once(__'src/controllers/homepage.php');\n+require_once('src/controllers/post.php');\n+\n+if (isset($_GET['action']) && $_GET['action'] !== '') {\n+\tif ($_GET['action'] === 'post') {\n+    \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n+        \t$identifier = $_GET['id'];\n+\n+        \tpost($identifier);\n+    \t} else {\n+        \techo 'Erreur : aucun identifiant de billet envoyé';\n+\n+        \tdie;\n+    \t}\n+\t} else {\n+    \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n+\t}\n+} else {\n+\thomepage();\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810461463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__'src/controllers/homepage.php');\n+require_once(__DIR__.'src/controllers/homepage.php');\n require_once('src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810468902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once(__DIR__.'src/controllers/homepage.php');\n-require_once('src/controllers/post.php');\n+require_once(__DIR__.'/../src/controllers/homepage.php');\n+require_once(__DIR'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810475339,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(__DIR__.'/../src/controllers/homepage.php');\n-require_once(__DIR'src/controllers/post.php');\n+require_once(__DIR__.'../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810534824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'/../src/controllers/homepage.php');\n+require_once(__DIR__.'/src/controllers/homepage.php');\n require_once(__DIR__.'../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810550529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once(__DIR__.'/src/controllers/homepage.php');\n-require_once(__DIR__.'../src/controllers/post.php');\n+require_once(__DIR__.'src/controllers/homepage.php');\n+require_once(__DIR__.'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810561851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once(__DIR__.'src/controllers/homepage.php');\n-require_once(__DIR__.'/src/controllers/post.php');\n+require_once(__DIR__.'/../src/controllers/homepage.php');\n+require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810568397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'/../src/controllers/homepage.php');\n+require_once(__DIR__.'./src/controllers/homepage.php');\n require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810597146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'./src/controllers/homepage.php');\n+require_once(__DIR__.'/../src/controllers/homepage.php');\n require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810611772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'/../src/controllers/homepage.php');\n+require_once('src/controllers/homepage.php');\n require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810625711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once('src/controllers/homepage.php');\n-require_once(__DIR__.'src/controllers/post.php');\n+require_once('./../src/controllers/homepage.php');\n+require_once('src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810632097,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once('./../src/controllers/homepage.php');\n-require_once('src/controllers/post.php');\n+require_once('./../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810641088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('./../src/controllers/homepage.php');\n+require_once('src/controllers/homepage.php');\n require_once('./../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810650719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once('src/controllers/homepage.php');\n-require_once('./../src/controllers/post.php');\n+require_once(__DIR__.'../src/controllers/homepage.php');\n+require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810687198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'../src/controllers/homepage.php');\n+require_once(__DIR__.'src/controllers/homepage.php');\n require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810694768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(__DIR__.'src/controllers/homepage.php');\n+require_once(__DIR__.'/src/controllers/homepage.php');\n require_once(__DIR__.'src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674810718019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(__DIR__.'/src/controllers/homepage.php');\n-require_once(__DIR__.'src/controllers/post.php');\n+require_once(__DIR__.'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674810857059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n-require_once(__DIR__.'/src/controllers/homepage.php');\n-require_once(__DIR__.'/src/controllers/post.php');\n+require_once(__DIR__ . '/../src/controllers/homepage.php');\n+require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674812866771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n <?php\n \n require_once(__DIR__ . '/../src/controllers/homepage.php');\n+\n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674812872787,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(__DIR__ . '/../src/controllers/homepage.php');\n-\n+var\n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674812879410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(__DIR__ . '/../src/controllers/homepage.php');\n-var\n+\n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674813917676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n \n+require_once(dirname(__FILE__,2  ).\"/model.php\");\n require_once(__DIR__ . '/../src/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n"
+                },
+                {
+                    "date": 1674813932340,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(__DIR__ . '/../src/controllers/homepage.php');\n+require_once(dirname(__DIR__ . '/../src/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674813937746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__DIR__ . '/../src/controllers/homepage.php');\n+require_once(dirname(__F . '/../src/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674813950687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__F . '/../src/controllers/homepage.php');\n+require_once(dirname(__FILE__,2 . '/../src/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674813956832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2 . '/../src/controllers/homepage.php');\n+require_once(dirname(__FILE__,2 . '/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674813964496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2 . '/controllers/homepage.php');\n+require_once(dirname(__FILE__,2  ).'/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674813969914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once(dirname(__FILE__,2  ).\"/model.php\");\n+r\n require_once(dirname(__FILE__,2  ).'/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n"
+                },
+                {
+                    "date": 1674813986408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <?php\n \n-r\n-require_once(dirname(__FILE__,2  ).'/controllers/homepage.php');\n \n+require_once(dirname(__FILE__,3 ).'/controllers/homepage.php');\n+\n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n"
+                },
+                {
+                    "date": 1674813996549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n \n-require_once(dirname(__FILE__,3 ).'/controllers/homepage.php');\n+require_once(dirname(__FILE__,1 ).'/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674814005553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n \n-require_once(dirname(__FILE__,1 ).'/controllers/homepage.php');\n+require_once(dirname(__FILE__,2 ).'/controllers/homepage.php');\n \n require_once(__DIR__.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674814021842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n <?php\n \n \n-require_once(dirname(__FILE__,2 ).'/controllers/homepage.php');\n+require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n-require_once(__DIR__.'/../src/controllers/post.php');\n+require_once(.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674814027255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n \n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n-require_once(.'/../src/controllers/post.php');\n+require_once(dirname.'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674814033635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n \n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n-require_once(dirname.'/../src/controllers/post.php');\n+require_once(dirname(__FILE).'/../src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674814046888,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n \n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n-require_once(dirname(__FILE).'/../src/controllers/post.php');\n+require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n \tif ($_GET['action'] === 'post') {\n     \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674814082831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n <?php\n \n-\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n"
+                },
+                {
+                    "date": 1674818946828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n-\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n+require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674818969659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n+require_once(dirname(__FILE__,2 ).'/src/controllers/add_C.php');\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n-require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n"
+                },
+                {
+                    "date": 1674818982689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(dirname(__FILE__,2 ).'/src/controllers/add_C.php');\n+require_once(dirname(__FILE__,2 ).'/src/controllers/add_comment.php');\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n \n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n@@ -14,8 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n+      \n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674818989204,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      \n+      elseif()\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674818996359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif()\n+      elseif($ )\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674819002632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif($ )\n+      elseif($_)\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674819007805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif($_)\n+      elseif($_GET[])\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674819013002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif($_GET[])\n+      elseif($_GET['action']===)\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674819020045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif($_GET['action']===)\n+      elseif($_GET['action']=== 'addComment')\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n"
+                },
+                {
+                    "date": 1674819027503,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,11 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n-      elseif($_GET['action']=== 'addComment')\n+      elseif($_GET['action']=== 'addComment') {\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n \thomepage();\n\\ No newline at end of file\n-}\n+}\n"
+                },
+                {
+                    "date": 1674819040937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,11 @@\n \n         \tdie;\n     \t}\n       elseif($_GET['action']=== 'addComment') {\n+         \n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n \thomepage();\n\\ No newline at end of file\n-}\n+}\n"
+                },
+                {
+                    "date": 1674819080992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,13 @@\n         \techo 'Erreur : aucun identifiant de billet envoyé';\n \n         \tdie;\n     \t}\n+      \n       elseif($_GET['action']=== 'addComment') {\n-         \n+\n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n\\ No newline at end of file\n \thomepage();\n-}\n+}\n"
+                },
+                {
+                    "date": 1674819181103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,23 +4,24 @@\n \n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n-\tif ($_GET['action'] === 'post') {\n-    \tif (isset($_GET['id']) && $_GET['id'] > 0) {\n-        \t$identifier = $_GET['id'];\n+   if ($_GET['action'] === 'post') {\n+      if (isset($_GET['id']) && $_GET['id'] > 0) {\n+         $identifier = $_GET['id'];\n \n-        \tpost($identifier);\n-    \t} else {\n-        \techo 'Erreur : aucun identifiant de billet envoyé';\n+         post($identifier);\n+      } else {\n+         echo 'Erreur : aucun identifiant de billet envoyé';\n \n-        \tdie;\n-    \t}\n+         die;\n+      }\n+\n\\ No newline at end of file\n+   } elseif($_GET['action']=== 'addComment') {\n       \n-      elseif($_GET['action']=== 'addComment') {\n \n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n \thomepage();\n-}\n+}\n"
+                },
+                {
+                    "date": 1674819194376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,12 +16,22 @@\n          die;\n       }\n \n    } elseif($_GET['action']=== 'addComment') {\n+      if (isset($_GET['action']) && $_GET['action'] !== '') {\n+         if ($_GET['action'] === 'post') {\n+            if (isset($_GET['id']) && $_GET['id'] > 0) {\n+               $identifier = $_GET['id'];\n       \n+               post($identifier);\n+            } else {\n+               echo 'Erreur : aucun identifiant de billet envoyé';\n\\ No newline at end of file\n+      \n+               die;\n+            }\n \n \t} else {\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n \thomepage();\n-}\n+}\n"
+                },
+                {
+                    "date": 1674819200615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n       \n-               post($identifier);\n+               ($identifier);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n       \n                die;\n@@ -33,5 +33,5 @@\n     \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n \t}\n } else {\n \thomepage();\n-}\n\\ No newline at end of file\n+}\n"
+                },
+                {
+                    "date": 1674819205720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n       \n-               ($identifier);\n+               add<($identifier);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n       \n                die;\n"
+                },
+                {
+                    "date": 1674819223181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n       \n-               add<($identifier);\n+               addComment($identifier);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n       \n                die;\n@@ -34,4 +34,5 @@\n \t}\n } else {\n \thomepage();\n }\n+   \n"
+                },
+                {
+                    "date": 1674819229733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,5 +34,6 @@\n \t}\n } else {\n \thomepage();\n }\n+\n    \n"
+                },
+                {
+                    "date": 1674819258862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,25 +15,26 @@\n \n          die;\n       }\n \n-   } elseif($_GET['action']=== 'addComment') {\n+   } elseif ($_GET['action'] === 'addComment') {\n       if (isset($_GET['action']) && $_GET['action'] !== '') {\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n-      \n-               addComment($identifier);\n+\n+               addComment($identifier,);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n-      \n+\n                die;\n             }\n \n-\t} else {\n-    \techo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n-\t}\n-} else {\n-\thomepage();\n+         } else {\n+            echo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n+         }\n+      } else {\n+         homepage();\n+      }\n+   }\n }\n-\n    \n"
+                },
+                {
+                    "date": 1674819264408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n \n-               addComment($identifier,);\n+               addComment($identifier,$);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n \n                die;\n"
+                },
+                {
+                    "date": 1674824093397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2 ).'/src/controllers/add_comment.php');\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n-\n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n \n if (isset($_GET['action']) && $_GET['action'] !== '') {\n    if ($_GET['action'] === 'post') {\n@@ -21,9 +20,9 @@\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n \n-               addComment($identifier,$);\n+               addComment($identifier,$_POST);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n \n                die;\n"
+                },
+                {
+                    "date": 1674824099825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,12 +10,10 @@\n \n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n-\n          die;\n       }\n-\n    } elseif ($_GET['action'] === 'addComment') {\n       if (isset($_GET['action']) && $_GET['action'] !== '') {\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n"
+                },
+                {
+                    "date": 1674824106196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,8 @@\n if (isset($_GET['action']) && $_GET['action'] !== '') {\n    if ($_GET['action'] === 'post') {\n       if (isset($_GET['id']) && $_GET['id'] > 0) {\n          $identifier = $_GET['id'];\n-\n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n@@ -24,9 +23,8 @@\n                echo 'Erreur : aucun identifiant de billet envoyé';\n \n                die;\n             }\n-\n          } else {\n             echo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n          }\n       } else {\n"
+                },
+                {
+                    "date": 1674824325517,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,17 +12,15 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n    } elseif ($_GET['action'] === 'addComment') {\n-      if (isset($_GET['action']) && $_GET['action'] !== '') {\n+      if (isset($_GET['id']) && $_GET['action'] !== '') {\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n-\n                addComment($identifier,$_POST);\n             } else {\n                echo 'Erreur : aucun identifiant de billet envoyé';\n-\n                die;\n             }\n          } else {\n             echo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n"
+                },
+                {
+                    "date": 1674824331993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n    } elseif ($_GET['action'] === 'addComment') {\n-      if (isset($_GET['id']) && $_GET['action'] !== '') {\n+      if (isset($_GET['id']) && $_GET['id'] !== '') {\n          if ($_GET['action'] === 'post') {\n             if (isset($_GET['id']) && $_GET['id'] > 0) {\n                $identifier = $_GET['id'];\n                addComment($identifier,$_POST);\n"
+                },
+                {
+                    "date": 1674824344846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,24 +10,7 @@\n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n-      }\n-   } elseif ($_GET['action'] === 'addComment') {\n-      if (isset($_GET['id']) && $_GET['id'] !== '') {\n-         if ($_GET['action'] === 'post') {\n-            if (isset($_GET['id']) && $_GET['id'] > 0) {\n-               $identifier = $_GET['id'];\n-               addComment($identifier,$_POST);\n-            } else {\n-               echo 'Erreur : aucun identifiant de billet envoyé';\n-               die;\n-            }\n-         } else {\n-            echo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n-         }\n-      } else {\n-         homepage();\n-      }\n-   }\n+    \n }\n    \n"
+                },
+                {
+                    "date": 1674824353482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,8 @@\n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n-    \n+   \n }\n+   }\n    \n"
+                },
+                {
+                    "date": 1674824363008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,10 @@\n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n-   \n-}\n+\n+      }elseif\n+\n    }\n-   \n+\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824369564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n \n-      }elseif\n+      }elseif($_)\n \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824375449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n \n-      }elseif($_)\n+      }elseif($_GET[])\n \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824381433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n \n-      }elseif($_GET[])\n+      }elseif($_GET['action'])\n \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824388066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n \n-      }elseif($_GET['action'])\n+      }elseif($_GET['action']===)\n \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824402130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n \n-      }elseif($_GET['action']===)\n+      }elseif($_GET['action']=== 'addComment')\n \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824412188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,12 @@\n          post($identifier);\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n+      }\n+      }elseif($_GET['action']=== 'addComment') {\n \n-      }elseif($_GET['action']=== 'addComment')\n \n+\n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824430794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n       }elseif($_GET['action']=== 'addComment') {\n+         \n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824443594,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,10 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n       }elseif($_GET['action']=== 'addComment') {\n-         \n+         if (isset($_GET['id']) && $_GET['id'] > 0) {\n+            $identifier = $_GET['id'];\n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824448987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n       }\n       }elseif($_GET['action']=== 'addComment') {\n          if (isset($_GET['id']) && $_GET['id'] > 0) {\n             $identifier = $_GET['id'];\n+            \n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824456978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,12 @@\n       }\n       }elseif($_GET['action']=== 'addComment') {\n          if (isset($_GET['id']) && $_GET['id'] > 0) {\n             $identifier = $_GET['id'];\n-            \n \n+            addComment\n \n \n+\n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824464361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n       }elseif($_GET['action']=== 'addComment') {\n          if (isset($_GET['id']) && $_GET['id'] > 0) {\n             $identifier = $_GET['id'];\n \n-            addComment\n+            addComment($identifier)\n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824469458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n       }elseif($_GET['action']=== 'addComment') {\n          if (isset($_GET['id']) && $_GET['id'] > 0) {\n             $identifier = $_GET['id'];\n \n-            addComment($identifier)\n+            addComment($identifier,$_POST)\n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824477280,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,12 +12,13 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n       }elseif($_GET['action']=== 'addComment') {\n-         if (isset($_GET['id']) && $_GET['id'] > 0) {\n-            $identifier = $_GET['id'];\n+      if (isset($_GET['id']) && $_GET['id'] > 0) {\n+         $identifier = $_GET['id'];\n \n-            addComment($identifier,$_POST)\n+         addComment($identifier, $_POST);\n+      }else\n \n \n \n    }\n"
+                },
+                {
+                    "date": 1674824484170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,11 +16,14 @@\n       if (isset($_GET['id']) && $_GET['id'] > 0) {\n          $identifier = $_GET['id'];\n \n          addComment($identifier, $_POST);\n-      }else\n+      }else{\n \n+         echo\n+      }\n \n \n+\n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824490719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \n          addComment($identifier, $_POST);\n       }else{\n \n-         echo\n+         echo 'Erreur : aucun identifiant de bi\n       }\n \n \n \n"
+                },
+                {
+                    "date": 1674824502734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,11 @@\n \n          addComment($identifier, $_POST);\n       }else{\n \n-         echo 'Erreur : aucun identifiant de bi\n+         echo 'Erreur : aucun identifiant de billet envoyé';\n+\n+         die()\n       }\n \n \n \n"
+                },
+                {
+                    "date": 1674824508076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n       }else{\n \n          echo 'Erreur : aucun identifiant de billet envoyé';\n \n-         die()\n+         die();\n       }\n \n \n \n"
+                },
+                {
+                    "date": 1674824516268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,7 +25,7 @@\n       }\n \n \n \n-   }\n+   }else\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824521422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,7 +25,10 @@\n       }\n \n \n \n-   }else\n+   }else{\n \n+      echo\"\n+   }\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824532677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n \n \n    }else{\n \n-      echo\"\n+      echo\"Erreur : la page \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824538206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n \n \n    }else{\n \n-      echo\"Erreur : la page \n+      echo\"Erreur : la page que \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824545670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n \n \n    }else{\n \n-      echo\"Erreur : la page que \n+      echo\"Erreur : la page que vous rechercher \n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824551950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n \n \n    }else{\n \n-      echo\"Erreur : la page que vous rechercher \n+      echo\"Erreur : la page que vous rechercher n'existe pas\n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824559403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n \n \n    }else{\n \n-      echo\"Erreur : la page que vous rechercher n'existe pas\n+      echo \"Erreur : la page que vous rechercher n'existe pas.\";\n    }\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824566419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,7 +28,8 @@\n \n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n-   }\n \n+   }else\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824572117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,7 +29,10 @@\n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n-   }else\n+   }else{\n \n+      hoempage();\n+   }\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674824582560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,5 +34,5 @@\n \n       hoempage();\n    }\n \n-}\n\\ No newline at end of file\n+}\n"
+                },
+                {
+                    "date": 1674824588544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,11 +22,8 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n \n          die();\n       }\n-\n-\n-\n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n"
+                },
+                {
+                    "date": 1674824600072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,10 +26,11 @@\n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n-   }else{\n+   }\n+   else{\n \n       hoempage();\n    }\n \n-}\n+\n"
+                },
+                {
+                    "date": 1674824613841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n \n          die();\n       }\n-   }else{\n+   } else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n    }\n@@ -32,5 +32,6 @@\n \n       hoempage();\n    }\n \n+}\n \n"
+                },
+                {
+                    "date": 1674824628101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,14 +22,13 @@\n          echo 'Erreur : aucun identifiant de billet envoyé';\n \n          die();\n       }\n-   } else{\n+   }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n-   }\n-   else{\n+   }else{\n \n       hoempage();\n    }\n \n"
+                },
+                {
+                    "date": 1674824633201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,4 +33,5 @@\n    }\n \n }\n \n+\n"
+                },
+                {
+                    "date": 1674824641211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n    }else{\n \n-      hoempage();\n+      homepage();\n    }\n \n }\n \n"
+                },
+                {
+                    "date": 1674824649293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n-   }else{\n+   }else {\n \n       homepage();\n    }\n \n"
+                },
+                {
+                    "date": 1674824663251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,10 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n-      }elseif($_GET['action']=== 'addComment') {\n+      }\n+      elseif($_GET['action']=== 'addComment') {\n       if (isset($_GET['id']) && $_GET['id'] > 0) {\n          $identifier = $_GET['id'];\n \n          addComment($identifier, $_POST);\n"
+                },
+                {
+                    "date": 1674824688075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,9 @@\n       } else {\n          echo 'Erreur : aucun identifiant de billet envoyé';\n          die;\n       }\n-      }\n-      elseif($_GET['action']=== 'addComment') {\n+      }elseif($_GET['action']=== 'addComment') {\n       if (isset($_GET['id']) && $_GET['id'] > 0) {\n          $identifier = $_GET['id'];\n \n          addComment($identifier, $_POST);\n@@ -27,9 +26,10 @@\n    }else{\n \n       echo \"Erreur : la page que vous rechercher n'existe pas.\";\n \n-   }else {\n+   }\n+   else {\n \n       homepage();\n    }\n \n"
+                },
+                {
+                    "date": 1674831139234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,38 +1,38 @@\n <?php\n require_once(dirname(__FILE__,2 ).'/src/controllers/add_comment.php');\n require_once(dirname(__FILE__,2 ).'/src/controllers/homepage.php');\n require_once(dirname(__FILE__,2).'/src/controllers/post.php');\n+<?php\n \n+require_once('src/controllers/add_comment.php');\n+require_once('src/controllers/homepage.php');\n+require_once('src/controllers/post.php');\n+\n if (isset($_GET['action']) && $_GET['action'] !== '') {\n-   if ($_GET['action'] === 'post') {\n-      if (isset($_GET['id']) && $_GET['id'] > 0) {\n-         $identifier = $_GET['id'];\n-         post($identifier);\n-      } else {\n-         echo 'Erreur : aucun identifiant de billet envoyé';\n-         die;\n-      }\n-      }elseif($_GET['action']=== 'addComment') {\n-      if (isset($_GET['id']) && $_GET['id'] > 0) {\n-         $identifier = $_GET['id'];\n+    if ($_GET['action'] === 'post') {\n+        if (isset($_GET['id']) && $_GET['id'] > 0) {\n+            $identifier = $_GET['id'];\n \n-         addComment($identifier, $_POST);\n-      }else{\n+            post($identifier);\n+        } else {\n+            echo 'Erreur : aucun identifiant de billet envoyé';\n \n-         echo 'Erreur : aucun identifiant de billet envoyé';\n+            die;\n+        }\n+    } elseif ($_GET['action'] === 'addComment') {\n+        if (isset($_GET['id']) && $_GET['id'] > 0) {\n+            $identifier = $_GET['id'];\n \n-         die();\n-      }\n-   }else{\n+            addComment($identifier, $_POST);\n+        } else {\n+            echo 'Erreur : aucun identifiant de billet envoyé';\n \n-      echo \"Erreur : la page que vous rechercher n'existe pas.\";\n-\n-   }\n-   else {\n-\n-      homepage();\n-   }\n-\n+            die;\n+        }\n+    } else {\n+        echo \"Erreur 404 : la page que vous recherchez n'existe pas.\";\n+    }\n+} else {\n+    homepage();\n }\n \n-\n"
+                }
+            ],
+            "date": 1674807918166,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\n<html>\n   <head>\n      <meta charset=\"utf-8\" />\n      <title>Le blog de l'AVBN</title>\n      <link href=\"style.css\" rel=\"stylesheet\" />\n   </head>\n\n   <body>\n      <h1>Le super blog de l'AVBN !</h1>\n      <p>Derniers billets du blog :</p>\n\n      <?php\n      // Connexion à la base de données\n      try\n      {\n          $bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');\n      }\n      catch(Exception $e){\n            die( 'Erreur : '.$e->getMessage()   );\n      }\n\n      // On récupère les 5 derniers billets\n      $req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \\'%d/%m/%Y à %Hh%imin%ss\\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');\n\n      while ($donnees = $req->fetch())\n      {\n      ?>\n      <div class=\"news\">\n         <h3>\n            <?php echo htmlspecialchars($donnees['titre']); ?>\n            <em>le <?php echo $donnees['date_creation_fr']; ?></em>\n         </h3>\n         <p>\n         <?php\n         // On affiche le contenu du billet\n                echo    nl2br ( htmlspecialchars( $donnees['contenu']));\n         ?>\n         <br />\n         <em><a href=\"#\">Commentaires</a></em>\n         </p>\n      </div>\n      <?php\n      } // Fin de la boucle des billets\n      $req->closeCursor();\n      ?>\n   </body>\n</html>\n"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "sourceFile": "templates/homepage.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1674808347253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674808603080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,21 +14,18 @@\n     \tforeach ($posts as $post) {\n     \t?>\n         \t<div class=\"news\">\n             \t<h3>\n-                \t<?php echo htmlspecialchars($post['title']); ?>\n-                \t<em>le <?php echo $post['french_creation_date']; ?></em>\n+                \t<?= htmlspecialchars($post['title']); ?>\n+                \t<em>le <?= $post['french_creation_date']; ?></em>\n             \t</h3>\n             \t<p>\n-                \t<?php\n-                \t// We display the post content.\n-                \techo nl2br(htmlspecialchars($post['content']));\n-                \t?>\n+                \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n                 \t<br />\n                 \t<em><a href=\"#\">Commentaires</a></em>\n             \t</p>\n         \t</div>\n     \t<?php\n-    \t} // The end of the posts loop.\n+    \t}\n     \t?>\n \t</body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674809532013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n             \t</h3>\n             \t<p>\n                 \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n                 \t<br />\n-                \t<em><a href=\"#\">Commentaires</a></em>\n+                \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n             \t</p>\n         \t</div>\n     \t<?php\n     \t}\n"
+                },
+                {
+                    "date": 1674809854228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,31 +1,26 @@\n-<!DOCTYPE html>\n-<html>\n-\t<head>\n-    \t<meta charset=\"utf-8\" />\n-    \t<title>Le blog de l'AVBN</title>\n-    \t<link href=\"style.css\" rel=\"stylesheet\" />\n-\t</head>\n+<?php $title = \"Le blog de l'AVBN\"; ?>\n \n-\t<body>\n-    \t<h1>Le super blog de l'AVBN !</h1>\n-    \t<p>Derniers billets du blog :</p>\n+<?php ob_start(); ?>\n+<h1>Le super blog de l'AVBN !</h1>\n+<p>Derniers billets du blog :</p>\n \n-    \t<?php\n-    \tforeach ($posts as $post) {\n-    \t?>\n-        \t<div class=\"news\">\n-            \t<h3>\n-                \t<?= htmlspecialchars($post['title']); ?>\n-                \t<em>le <?= $post['french_creation_date']; ?></em>\n-            \t</h3>\n-            \t<p>\n-                \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n-                \t<br />\n-                \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n-            \t</p>\n-        \t</div>\n-    \t<?php\n\\ No newline at end of file\n-    \t}\n-    \t?>\n-\t</body>\n-</html>\n+<?php\n+foreach ($posts as $post) {\n+?>\n+\t<div class=\"news\">\n+    \t<h3>\n+        \t<?= htmlspecialchars($post['title']); ?>\n+        \t<em>le <?= $post['french_creation_date']; ?></em>\n+    \t</h3>\n+    \t<p>\n+        \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n+        \t<br />\n+        \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+    \t</p>\n+\t</div>\n+<?php\n+}\n+?>\n+<?php $content = ob_get_clean(); ?>\n+\n+<?php require('layout.php') ?>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812759154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     \t</h3>\n     \t<p>\n         \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n         \t<br />\n-        \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+        \t<em><a href=\"index.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n     \t</p>\n \t</div>\n <?php\n }\n"
+                },
+                {
+                    "date": 1674812919620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     \t</h3>\n     \t<p>\n         \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n         \t<br />\n-        \t<em><a href=\"index.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+        \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n     \t</p>\n \t</div>\n <?php\n }\n"
+                },
+                {
+                    "date": 1674812979008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     \t</h3>\n     \t<p>\n         \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n         \t<br />\n-        \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+        \t<em><a href=\"index.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n     \t</p>\n \t</div>\n <?php\n }\n"
+                },
+                {
+                    "date": 1674813382383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     \t</h3>\n     \t<p>\n         \t<?= nl2br(htmlspecialchars($post['content'])); ?>\n         \t<br />\n-        \t<em><a href=\"pos.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+        \t<em><a href=\"post.php?id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n     \t</p>\n \t</div>\n <?php\n }\n"
+                },
+                {
+                    "date": 1674829735283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         </h3>\n         <p>\n             <?= nl2br(htmlspecialchars($post['content'])); ?>\n             <br />\n-            <em><a href=\"index.php?action=&id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n+            <em><a href=\"index.php?action=a&id=<?= urlencode($post['identifier']) ?>\">Commentaires</a></em>\n             \n         </p>\n     </div>\n <?php\n"
+                }
+            ],
+            "date": 1674808347253,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\n<html>\n\t<head>\n    \t<meta charset=\"utf-8\" />\n    \t<title>Le blog de l'AVBN</title>\n    \t<link href=\"style.css\" rel=\"stylesheet\" />\n\t</head>\n\n\t<body>\n    \t<h1>Le super blog de l'AVBN !</h1>\n    \t<p>Derniers billets du blog :</p>\n\n    \t<?php\n    \tforeach ($posts as $post) {\n    \t?>\n        \t<div class=\"news\">\n            \t<h3>\n                \t<?php echo htmlspecialchars($post['title']); ?>\n                \t<em>le <?php echo $post['french_creation_date']; ?></em>\n            \t</h3>\n            \t<p>\n                \t<?php\n                \t// We display the post content.\n                \techo nl2br(htmlspecialchars($post['content']));\n                \t?>\n                \t<br />\n                \t<em><a href=\"#\">Commentaires</a></em>\n            \t</p>\n        \t</div>\n    \t<?php\n    \t} // The end of the posts loop.\n    \t?>\n\t</body>\n</html>"
+        }
+    ]
+}

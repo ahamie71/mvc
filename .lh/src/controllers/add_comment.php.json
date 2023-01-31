@@ -1,0 +1,246 @@
+{
+    "sourceFile": "src/controllers/add_comment.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 57,
+            "patches": [
+                {
+                    "date": 1674818323320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674818333286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-require\n\\ No newline at end of file\n+<?php\n"
+                },
+                {
+                    "date": 1674818339074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n <?php\n+require_once()\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818344838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n <?php\n-require_once()\n\\ No newline at end of file\n+require_once(dirname(__FILE__) .)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818354914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n <?php\n-require_once(dirname(__FILE__) .)\n\\ No newline at end of file\n+require_once(dirname(__FILE__,2) .\"/src)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818363371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n <?php\n-require_once(dirname(__FILE__,2) .\"/src)\n\\ No newline at end of file\n+require_once(dirname(__FILE__,2) .\"/src/model/)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818369765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n <?php\n-require_once(dirname(__FILE__,2) .\"/src/model/)\n\\ No newline at end of file\n+require_once(dirname(__FILE__,2) .\"/src/model/comment.php)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818377751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,4 @@\n <?php\n-require_once(dirname(__FILE__,2) .\"/src/model/comment.php)\n\\ No newline at end of file\n+require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n+\n+function \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818384290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function \n\\ No newline at end of file\n+function AddComment( )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818395447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment( )\n\\ No newline at end of file\n+function AddComment($string ^ )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818401663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($string ^ )\n\\ No newline at end of file\n+function AddComment($strin $post ,array )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818409709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($strin $post ,array )\n\\ No newline at end of file\n+function AddComment($strin $post ,array $imput )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818416702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($strin $post ,array $imput )\n\\ No newline at end of file\n+function AddComment($string $post , array $imput )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818424029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($string $post , array $imput )\n\\ No newline at end of file\n+function AddComment($string $post , array $imput ){\n+    \n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818432688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($string $post , array $imput ){\n-    \n+function AddComment($string  $post , array $imput ){\n+\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818443041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-function AddComment($string  $post , array $imput ){\n+function AddComment( string  $post , array $imput ){\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818448124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,8 @@\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n function AddComment( string  $post , array $imput ){\n \n+    $author\n \n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818483832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n+\n function AddComment( string  $post , array $imput ){\n \n-    $author\n+    $author = null;\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818495096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-\n+//On creer une fonction adddComment qui prend en parametre \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818501221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction adddComment qui prend en parametre \n+//On creer une fonction addComment qui prend en parametre  \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818515490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre  \n+//On creer une fonction addComment qui prend en parametre l'i \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818525706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre l'i \n+//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerne  \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818531722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerne  \n+//On creer une fonction addComment qui prend en parametre l'identifiant du billet concern \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818558302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre l'identifiant du billet concern \n+//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput soius forme de tableau \n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818583722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput soius forme de tableau \n+//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput sous forme de tableau , ce sont le sdonnées soumise\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818589891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2) .\"/src/model/comment.php\");\n \n-//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput sous forme de tableau , ce sont le sdonnées soumise\n+//On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput sous forme de tableau , ce sont le sdonnées soumises par le formulaire\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n \n"
+                },
+                {
+                    "date": 1674818601251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,8 @@\n //On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput sous forme de tableau , ce sont le sdonnées soumises par le formulaire\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n+    \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818610286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n //On creer une fonction addComment qui prend en parametre l'identifiant du billet concerné , et un  imput sous forme de tableau , ce sont le sdonnées soumises par le formulaire\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n+    $comment = null;\n     \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818617441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n     $comment = null;\n-    \n+    if(!empty)\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818623054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n     $comment = null;\n-    if(!empty)\n+    if(!empty($imput))\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818630911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n     $comment = null;\n-    if(!empty($imput))\n+    if(!empty($imput['author'])) && \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818639152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n     $comment = null;\n-    if(!empty($imput['author'])) && \n+    if(!empty($imput['author'])) && !empty($imput['comment'])){\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818644295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,8 @@\n \n     $author = null;\n     $comment = null;\n     if(!empty($imput['author'])) && !empty($imput['comment'])){\n+        \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818651247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,11 @@\n function AddComment( string  $post , array $imput ){\n \n     $author = null;\n     $comment = null;\n-    if(!empty($imput['author'])) && !empty($imput['comment'])){\n-        \n+    if(!empty($imput['author']) && !empty($imput['comment'])){\n \n+        $author\n \n+\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818656839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     $author = null;\n     $comment = null;\n     if(!empty($imput['author']) && !empty($imput['comment'])){\n \n-        $author\n+        $author= $\n \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818662267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     $author = null;\n     $comment = null;\n     if(!empty($imput['author']) && !empty($imput['comment'])){\n \n-        $author= $\n+        $author= $input[]\n \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818669735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n     $author = null;\n     $comment = null;\n     if(!empty($imput['author']) && !empty($imput['comment'])){\n \n-        $author= $input[]\n+        $author= $input['author'];\n+        $com\n \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818676019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     $comment = null;\n     if(!empty($imput['author']) && !empty($imput['comment'])){\n \n         $author= $input['author'];\n-        $com\n+        $comment=\n \n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818683793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,11 @@\n     $comment = null;\n     if(!empty($imput['author']) && !empty($imput['comment'])){\n \n         $author= $input['author'];\n-        $comment=\n+        $comment= $input['comment'];\n \n+        else\n \n \n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818691426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,12 @@\n \n         $author= $input['author'];\n         $comment= $input['comment'];\n \n-        else\n+        else{\n \n+            di\n+        }\n \n \n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818698138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,11 +10,11 @@\n \n         $author= $input['author'];\n         $comment= $input['comment'];\n \n-        else{\n+    }else{\n \n-            di\n+            die()\n         }\n \n \n \n"
+                },
+                {
+                    "date": 1674818705715,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n         $comment= $input['comment'];\n \n     }else{\n \n-            die()\n+            die('les données ')\n         }\n \n \n \n"
+                },
+                {
+                    "date": 1674818711378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n         $comment= $input['comment'];\n \n     }else{\n \n-            die('les données ')\n+            die('les données du formulaire ')\n         }\n \n \n \n"
+                },
+                {
+                    "date": 1674818718014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n         $comment= $input['comment'];\n \n     }else{\n \n-            die('les données du formulaire ')\n+            die('les données du formulaire sont invalides ')\n         }\n \n \n \n"
+                },
+                {
+                    "date": 1674818725788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,10 @@\n         $comment= $input['comment'];\n \n     }else{\n \n-            die('les données du formulaire sont invalides ')\n+        die('les données du formulaire sont invalides ');\n+        \n         }\n \n \n \n"
+                },
+                {
+                    "date": 1674818737602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n \n     }else{\n \n         die('les données du formulaire sont invalides ');\n-        \n+\n         }\n \n+$\n \n-\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818744058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n         die('les données du formulaire sont invalides ');\n \n         }\n \n-$\n+$suc\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818752516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n         die('les données du formulaire sont invalides ');\n \n         }\n \n-$suc\n+$success= createComment\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818760104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n         die('les données du formulaire sont invalides ');\n \n         }\n \n-$success= createComment\n+$success= createComment( $post, $comment,$ );\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818766175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,9 @@\n         die('les données du formulaire sont invalides ');\n \n         }\n \n-$success= createComment( $post, $comment,$ );\n+$success= createComment( $post, $comment,$author );\n \n+i\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818778085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,7 @@\n         }\n \n $success= createComment( $post, $comment,$author );\n \n-i\n+if(!)\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818786764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,7 @@\n         }\n \n $success= createComment( $post, $comment,$author );\n \n-if(!)\n+if(!$success)[]\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818795365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,10 @@\n         }\n \n $success= createComment( $post, $comment,$author );\n \n-if(!$success)[]\n+if(!$success){\n+    \n+}\n \n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818801091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,10 @@\n \n $success= createComment( $post, $comment,$author );\n \n if(!$success){\n-    \n+\n+    die('')\n }\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818810487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n $success= createComment( $post, $comment,$author );\n \n if(!$success){\n \n-    die('')\n+    die('Impossible d')\n }\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818816914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n $success= createComment( $post, $comment,$author );\n \n if(!$success){\n \n-    die('Impossible d')\n+    die('Impossible d/)\n }\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818822979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n $success= createComment( $post, $comment,$author );\n \n if(!$success){\n \n-    die('Impossible d/)\n+    die('Impossible d\\)\n }\n \n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674818828801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n $success= createComment( $post, $comment,$author );\n \n if(!$success){\n \n-    die('Impossible d\\ajouter le do)\n+    die('Impossible d\\ajouter le d)\n }\n \n \n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1674818323320,
+            "name": "Commit-0",
+            "content": "require"
+        }
+    ]
+}

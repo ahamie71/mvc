@@ -1,0 +1,146 @@
+{
+    "sourceFile": "src/controllers/post.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 32,
+            "patches": [
+                {
+                    "date": 1674810203411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674810214816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require(__DIR__.'/../src/model.php');\n+require_(__DIR__.'/../src/model.php');\n  \n if (isset($_GET['id']) && $_GET['id'] > 0) {\n     $identifier = $_GET['id'];\n } else {\n"
+                },
+                {
+                    "date": 1674810238527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,8 @@\n <?php\n-require_(__DIR__.'/../src/model.php');\n+require_once(__DIR__.'/../src/model.php');\n  \n-if (isset($_GET['id']) && $_GET['id'] > 0) {\n-    $identifier = $_GET['id'];\n-} else {\n-    echo 'Erreur : aucun identifiant de billet envoyé';\n- \n-    die;\n-}\n \n-$post = getPost($identifier);\n-$comments = getComments($identifier);\n \n \n \n \n"
+                },
+                {
+                    "date": 1674810248249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n <?php\n require_once(__DIR__.'/../src/model.php');\n  \n+function\n \n \n \n \n-\n require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810257583,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(__DIR__.'/../src/model.php');\n  \n-function\n+function post(string )\n \n \n \n \n"
+                },
+                {
+                    "date": 1674810266766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n <?php\n require_once(__DIR__.'/../src/model.php');\n  \n-function post(string )\n+function post(string $identifier)\n \n \n \n \n+\n require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810275557,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,12 @@\n <?php\n require_once(__DIR__.'/../src/model.php');\n  \n function post(string $identifier)\n+{\n+    $post\n \n+}\n \n \n \n \n"
+                },
+                {
+                    "date": 1674810281783,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n require_once(__DIR__.'/../src/model.php');\n  \n function post(string $identifier)\n {\n-    $post\n+    $post=getPost\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674810288581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,10 @@\n require_once(__DIR__.'/../src/model.php');\n  \n function post(string $identifier)\n {\n-    $post=getPost\n+    $post=getPost($identifier);\n+    \n \n }\n \n \n"
+                },
+                {
+                    "date": 1674810293644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n-    \n+    $comment\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674810302577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n-    $comment\n+    $comment=getComments($identifier);\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674810309066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n+    require(__DIR__.'/../templates/post.php');\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674812288198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/../src/model.php');\n+require_once(dirname(__FILE__,2  ).\"/model.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n@@ -11,5 +11,4 @@\n \n \n \n \n-require(__DIR__.'/../templates/post.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674813174374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    require(__DIR__.'/../templates/post.php');\n+    rrequire_once(dirname(__FILE__,2  ).\"/model.php\");\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813182761,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    rrequire_once(dirname(__FILE__,2  ).\"/model.php\");\n+    rrequire_once(dirname(__FILE__,2  ).\"/templatesmodel.php\");\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813193119,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    rrequire_once(dirname(__FILE__,2  ).\"/templatesmodel.php\");\n+    var(dirname(__FILE__,2  ).\"/templates/model.php\");\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813199635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    var(dirname(__FILE__,2  ).\"/templates/model.php\");\n+    var_dump(dirname(__FILE__,2  ).\"/templates/model.php\");\n+    die();\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813215174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    var_dump(dirname(__FILE__,2  ).\"/templates/model.php\");\n-    die();\n+    rrequire_once(dirname(__FILE__,2  ).\"/templates/model.php\");\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813220706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    rrequire_once(dirname(__FILE__,2  ).\"/templates/model.php\");\n+    require(__DIR__.'/../templates/post.php');\n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813229825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n+    require_once(dirname(__FILE__,2  ).\"/model.php\");\n     require(__DIR__.'/../templates/post.php');\n \n }\n \n"
+                },
+                {
+                    "date": 1674813237442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    require_once(dirname(__FILE__,2  ).\"/model.php\");\n+    require_once(dirname(__FILE__,2  ).\"/templates/model.php\");\n     require(__DIR__.'/../templates/post.php');\n \n }\n \n"
+                },
+                {
+                    "date": 1674813259278,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,10 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    require_once(dirname(__FILE__,2  ).\"/templates/model.php\");\n-    require(__DIR__.'/../templates/post.php');\n+    require_once(dirname(__FILE__,2  ).\"/templates/post.php\");\n+    \n \n }\n \n \n"
+                },
+                {
+                    "date": 1674813277527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    require_once(dirname(__FILE__,2  ).\"/templates/post.php\");\n+    var_dump(dirname(__FILE__,3  ).\"/templates/post.php\");\n     \n \n }\n \n"
+                },
+                {
+                    "date": 1674813286313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    var_dump(dirname(__FILE__,3  ).\"/templates/post.php\");\n+    v(dirname(__FILE__,3  ).\"/templates/post.php\");\n     \n \n }\n \n"
+                },
+                {
+                    "date": 1674813858857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,11 @@\n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    v(dirname(__FILE__,3  ).\"/templates/post.php\");\n     \n+    require_once(dirname(__FILE__,3  ).\"/templates/post.php\");\n+    \n \n }\n \n \n"
+                },
+                {
+                    "date": 1674826867806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,13 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n+require_once(dirname(__FILE__,2  ).\"/model.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n     $comment=getComments($identifier);\n-    \n+\n     require_once(dirname(__FILE__,3  ).\"/templates/post.php\");\n     \n \n }\n"
+                },
+                {
+                    "date": 1674826879742,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2  ).\"/model.php\");\n+require_once(dirname(__FILE__,2  ).\"/comment.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n"
+                },
+                {
+                    "date": 1674827046590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2  ).\"/comment.php\");\n+require_once(dirname(__FILE__,3  ).\"/comment.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n"
+                },
+                {
+                    "date": 1674827052332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,3  ).\"/comment.php\");\n+require_once(dirname(__FILE__,2  ).\"/comment.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n"
+                },
+                {
+                    "date": 1674827059840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2  ).\"/comment.php\");\n+require_once(dirname(__FILE__,2  ).\"/modelcomment.php\");\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n"
+                },
+                {
+                    "date": 1674830600490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,4 @@\n <?php\n-require_once(dirname(__FILE__,2  ).\"/model.php\");\n-require_once(dirname(__FILE__,2  ).\"/modelcomment.php\");\n- \n-function post(string $identifier)\n-{\n-    $post=getPost($identifier);\n-    $comment=getComments($identifier);\n \n-    require_once(dirname(__FILE__,3  ).\"/templates/post.php\");\n-    \n \n-}\n \n-\n-\n-\n"
+                },
+                {
+                    "date": 1674830608590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,17 @@\n <?php\n+require_once(dirname(__FILE__,2  ).\"/model.php\");\n+require_once(dirname(__FILE__,2  ).\"/model/comment.php\");\n+ \n+function post(string $identifier)\n+{\n+    $post=getPost($identifier);\n+    $comment=getComments($identifier);\n \n+    require_once(dirname(__FILE__,3  ).\"/templates/post.php\");\n+    \n \n+}\n \n+\n+\n+\n"
+                },
+                {
+                    "date": 1675177879709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n  \n function post(string $identifier)\n {\n     $post=getPost($identifier);\n-    $comment=getComments($identifier);\n+    $comments=getComments($identifier);\n \n     require_once(dirname(__FILE__,3  ).\"/templates/post.php\");\n     \n \n"
+                }
+            ],
+            "date": 1674810203411,
+            "name": "Commit-0",
+            "content": "<?php\nrequire(__DIR__.'/../src/model.php');\n \nif (isset($_GET['id']) && $_GET['id'] > 0) {\n    $identifier = $_GET['id'];\n} else {\n    echo 'Erreur : aucun identifiant de billet envoyé';\n \n    die;\n}\n\n$post = getPost($identifier);\n$comments = getComments($identifier);\n\n\n\n\nrequire(__DIR__.'/../templates/post.php');"
+        }
+    ]
+}

@@ -1,0 +1,418 @@
+{
+    "sourceFile": "src/controllers/homepage.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 100,
+            "patches": [
+                {
+                    "date": 1674810130803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1674810138044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__.'/../src/model.php');\n+require_once(__DIR__.'/../src/model.php');\n \n $posts = getPosts();\n \n require(__DIR__.'/../templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810144034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n <?php\n \n require_once(__DIR__.'/../src/model.php');\n \n+\n $posts = getPosts();\n \n require(__DIR__.'/../templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810149504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n require_once(__DIR__.'/../src/model.php');\n \n-\n+function homepa\n $posts = getPosts();\n \n require(__DIR__.'/../templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810155467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <?php\n \n require_once(__DIR__.'/../src/model.php');\n \n-function homepa\n+function homepage()\n+\n $posts = getPosts();\n \n require(__DIR__.'/../templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810168469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n \n require_once(__DIR__.'/../src/model.php');\n \n function homepage()\n+{\n \n+\n $posts = getPosts();\n \n require(__DIR__.'/../templates/homepage.php');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674810984390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,12 @@\n <?php\n \n-require_once(__DIR__.'/../src/model.php');\n+require_once(__DIR__.'src/model.php');\n \n function homepage()\n {\n \n \n-$posts = getPosts();\n+    $posts = getPosts();\n\\ No newline at end of file\n \n-require(__DIR__.'/../templates/homepage.php');\n+    require(__DIR__ . '/../templates/homepage.php');\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811023684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n <?php\n \n-require_once(__DIR__.'src/model.php');\n-\n+require(__DIR__ . '/../templates/homepage.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811031139,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__ . '/../templates/homepage.php');\n+require(__DIR__ . '/../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811040790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__ . '/../src/model.php');\n+require(__DIR__ .'/../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811074925,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__ .'/../src/model.php');\n+require('src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811084592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require('src/model.php');\n+require('./../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811145316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n \n     $posts = getPosts();\n \n-    require(__DIR__ . '/../templates/homepage.php');\n+    require_(__DIR__ . '/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811152736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n <?php\n \n-require('./../src/model.php');\n+require_once('./../src/model.php');\n function homepage()\n {\n \n \n     $posts = getPosts();\n \n-    require_(__DIR__ . '/../templates/homepage.php');\n+    require_once(__DIR__ . '/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811173777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('./../src/model.php');\n+require_once('/../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811184159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('/../src/model.php');\n+require_once('/src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811189821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('/src/model.php');\n+require_once('src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811197327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('src/model.php');\n+require_once('MVCsrc/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811208029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('MVCsrc/model.php');\n+require_once('./MVC/src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811219615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require_once('./MVC/src/model.php');\n+require_once('/../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811227459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n <?php\n \n-require_once('/../src/model.php');\n+require(__DIR__.'/../src/model.php');\n function homepage()\n {\n \n \n     $posts = getPosts();\n \n-    require_once(__DIR__ . '/../templates/homepage.php');\n+    require(__DIR__ . '/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811232590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-require(__DIR__.'/../src/model.php');\n+require_once(__DIR__.'/../src/model.php');\n function homepage()\n {\n \n \n"
+                },
+                {
+                    "date": 1674811239784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n \n     $posts = getPosts();\n \n-    require(__DIR__ . '/../templates/homepage.php');\n+    require_once(__DIR__ .'/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811256632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,8 @@\n \n require_once(__DIR__.'/../src/model.php');\n function homepage()\n {\n-\n-\n     $posts = getPosts();\n \n     require_once(__DIR__ .'/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674811264161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n <?php\n-\n require_once(__DIR__.'/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n"
+                },
+                {
+                    "date": 1674811271562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/../src/model.php');\n+require_once(__DIR__.'/src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811289318,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/src/model.php');\n+require_once(__DIR__.'/./src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811295730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/./src/model.php');\n+require_once(__DIR__.'/src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811428429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/src/model.php');\n+require_once(__DIR__.'/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811511464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(__DIR__.'/model.php');\n+require_once(/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811517318,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(/model.php');\n+require_once('./../model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811523111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once('./../model.php');\n+require_once('.model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811561201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once('.model.php');\n+require_once('./../model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811575524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once('./../model.php');\n+require_once('/../model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811599028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once('/../model.php');\n+require_once('/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811607474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n <?php\n+\n require_once('/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n"
+                },
+                {
+                    "date": 1674811618964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-\n+var_dump(__)\n require_once('/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n"
+                },
+                {
+                    "date": 1674811625623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(__)\n+var_dump(__DIR__.)\n require_once('/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n"
+                },
+                {
+                    "date": 1674811635175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n-var_dump(__DIR__.)\n+var_dump(__DIR__);\n+die();\n require_once('/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n"
+                },
+                {
+                    "date": 1674811682927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n var_dump(__DIR__);\n die();\n-require_once('/../src/model.php');\n+require_once(__DIR__ .'/../templates/homepage.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811688308,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n var_dump(__DIR__);\n die();\n-require_once(__DIR__ .'/../templates/homepage.php');\n+require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674811713427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(__DIR__);\n+var_dump(__DIR);\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811720198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(__DIR);\n+var_dump(__DIRname);\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811725710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(__DIRname);\n+var_dump(dir);\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811739111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dir);\n+var_dump(dirname();\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811745505,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname();\n+var_dump(dirname(__FILE__);\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811752435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__);\n+var_dump(dirname(__FILE__));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811766867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__));\n+var_dump(dirname(__FILE__,1));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811801649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,1));\n+var_dump(dirname(__FILE__,));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811829715,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,));\n+var_dump(dirname());\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811853011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname());\n+var_dump(dirname(__FILE__,));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811866804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,));\n+var_dump(dirname(__FILE__,2));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811873915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2));\n+var_dump(dirname(__FILE__,0));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811897207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,0));\n+var_dump(dirname(__FILE__,2));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811913737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2));\n+var_dump(\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811922620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(\n+var_dump(__FILE\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674811957593,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(__FILE\n+var_dump(dirname(__FILE__,2));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812066392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2));\n+var_dump(dirname(__FILE__,3));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812095827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,3));\n+var_dump(dirname(__FILE__,2));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812120815,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2));\n+var_dump(dirname(__FILE__,2 ));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812128767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2 ));\n+var_dump(dirname(__FILE__,2  ));\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812137548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ));\n+var_dump(dirname(__FILE__,2  ) );\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812145360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ) );\n+var_dump(dirname(__FILE__,2  ) .\"tot);\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812159520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ) .\"tot);\n+var_dump(dirname(__FILE__,2  ) .\"\");\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812176773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ) .\"\");\n+var_dump(dirname(__FILE__,2  ).\"model.php\");\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812209185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ).\"model.php\");\n+var_dump(dirname(__FILE__,2  ).\"/model.php\");\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812227752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-var_dump(dirname(__FILE__,2  ).\"/model.php\");\n+require_once(dirname(__FILE__,2  ).\"/model.php\");\n die();\n require_once(__DIR__ .'/../src/model.php');\n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674812234337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require_once(dirname(__FILE__,2  ).\"/model.php\");\n-die();\n-require_once(__DIR__ .'/../src/model.php');\n+\n+\n function homepage()\n {\n     $posts = getPosts();\n \n"
+                },
+                {
+                    "date": 1674812327813,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,6 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    require_once(__DIR__ .'/../templates/homepage.php');\n+    r(__DIR__ .'/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812332876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,6 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    r(__DIR__ .'/../templates/homepage.php');\n+    var(__DIR__ .'/../templates/homepage.php');\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812344128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var(__DIR__ .'/../templates/homepage.php');\n+    var_dump(__DIR__ .'/../templates/homepage.php');\n+    die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812365117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump(__DIR__ .'/../templates/homepage.php');\n+    var_dump();\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812374784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump();\n+    var_dump(dirname(__FILE__);\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812380077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump(dirname(__FILE__);\n+    var_dump(dirname(__FILE__,2);\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812388346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump(dirname(__FILE__,2);\n+    var_dump(dirname(__FILE__,2));\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812395673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump(dirname(__FILE__,2));\n+    var_dump(dirname(__FILE__,2)).;\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812404095,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    var_dump(dirname(__FILE__,2)).;\n-    die();\n+    var_dump(__DIR__ .'/../templates/homepage.php');\n+    die\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812423609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,8 @@\n function homepage()\n {\n     $posts = getPosts();\n \n+    require_once(dirname(__FILE__,2  ).\"/model.php\");\n     var_dump(__DIR__ .'/../templates/homepage.php');\n-    die\n+    die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812432096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n     require_once(dirname(__FILE__,2  ).\"/model.php\");\n-    var_dump(__DIR__ .'/../templates/homepage.php');\n+    var_dump(__FILE__ .'/../templates/homepage.php');\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812443096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n     require_once(dirname(__FILE__,2  ).\"/model.php\");\n-    var_dump(__FILE__ .'/../templates/homepage.php');\n+    var_dump(dirname__FILE__ .'/../templates/homepage.php');\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812451034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n     require_once(dirname(__FILE__,2  ).\"/model.php\");\n-    var_dump(dirname__FILE__ .'/../templates/homepage.php');\n+    var_dump(dirname(__FILE__,2) .'/../templates/homepage.php');\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812461524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n function homepage()\n {\n     $posts = getPosts();\n \n-    require_once(dirname(__FILE__,2  ).\"/model.php\");\n-    var_dump(dirname(__FILE__,2) .'/../templates/homepage.php');\n+  \n+    var_dump(dirname(__FILE__,2) .'templates/homepage.php');\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812475961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n   \n-    var_dump(dirname(__FILE__,2) .'templates/homepage.php');\n+    var_dump(dirname(__FILE__,2) .'/templates/homepage.php');\n     die();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812481118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n     $posts = getPosts();\n \n   \n     var_dump(dirname(__FILE__,2) .'/templates/homepage.php');\n-    die();\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812489978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n   \n-    var_dump(dirname(__FILE__,2) .'/templates/homepage.php');\n+    require_once(dirname(__FILE__,2) .'/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674812516593,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n {\n     $posts = getPosts();\n \n   \n-    require_once(dirname(__FILE__,2) .'/templates/homepage.php');\n+    require_once(dirname(__FILE__,3) .'/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674814931789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(dirname(__FILE__,2  ).\"/model.php\");\n+require_once(dirname(__FILE__,2  ).\"/src/model.php\");\n \n \n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674814941878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n <?php\n-require_once(dirname(__FILE__,2  ).\"/src/model.php\");\n+require_once(dirname(__FILE__,2  ).\"//model.php\");\n \n \n function homepage()\n {\n"
+                },
+                {
+                    "date": 1674814953981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n <?php\n-require_once(dirname(__FILE__,2  ).\"//model.php\");\n+require_once(dirname(__FILE__, 2) . \"/model.php\");\n \n \n function homepage()\n {\n     $posts = getPosts();\n \n-  \n-    require_once(dirname(__FILE__,3) .'/templates/homepage.php');\n \n+    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674814959603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,8 @@\n <?php\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n-\n-\n function homepage()\n {\n     $posts = getPosts();\n-\n-\n     require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674815009967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816213843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 2) . '/templates/.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816223020,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 2) . '/templates/.php');\n+    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816280940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816308283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816337180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 2) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816615979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,8 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 2\n+    ) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674816622495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 2\n-    ) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674817107351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, ) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674817118548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, ) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1674830793901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require_once(dirname(__FILE__, 2) . \"/model.php\");\n function homepage()\n {\n     $posts = getPosts();\n-    require_once(dirname(__FILE__, 3) . '/templates/homepage.php');\n+    require_once(dirname(__FILE__, ) . '/templates/homepage.php');\n \n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1674810130803,
+            "name": "Commit-0",
+            "content": "<?php\n\nrequire(__DIR__.'/../src/model.php');\n\n$posts = getPosts();\n\nrequire(__DIR__.'/../templates/homepage.php');"
+        }
+    ]
+}
